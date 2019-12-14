@@ -4,6 +4,8 @@ import Register from '@/views/Register/Register.vue'
 import Login from '@/views/Login/Login.vue'
 import OfferRide from '@/views/OfferRide/OfferRide.vue'
 import FindRide from '@/views/FindRide/FindRide.vue'
+import About from '@/views/About.vue'
+
 
 Vue.use(Router)
 
@@ -30,6 +32,11 @@ export default new Router({
       path: '/find-ride',
       name: 'FindRide',
       component: FindRide
+    },
+    {
+      path: '/',
+      name: 'About',
+      component: About
     }
   ]
 })

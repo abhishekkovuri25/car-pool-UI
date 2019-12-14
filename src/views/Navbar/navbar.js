@@ -1,5 +1,3 @@
-import Login from '@/views/Login/Login.vue'
-import Register from '@/views/Register/Register.vue'
 export default {
   data () {
     return {
@@ -7,12 +5,8 @@ export default {
     }
   },
   created() {
-    this.page = "Login" 
+    this.page = "Login"
   },
   methods: {
-  },
-  components: {
-    Login,
-    Register
   }
 }

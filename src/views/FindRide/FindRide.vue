@@ -3,7 +3,7 @@
 			<b-row align-h="center">
 				<b-col cols="5">
                     <h2> Find a Ride </h2>
-					<b-card>
+					<b-card style="opacity:0.9">
                         <b-row>
                             Pick up : <b-form-select v-model="selected" :options="options"></b-form-select>
                             Destination : <b-form-input id="number" type="number" v-model="availableSeats"></b-form-input>
