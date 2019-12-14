@@ -3,7 +3,7 @@
 		<b-container>
 			<b-row align-h="center">
 				<b-col cols="5" class="register">
-					<b-form @submit="onSubmit" @reset="onReset">
+					<b-form class="card" @submit="onSubmit" @reset="onReset">
 						<b-form-group id="input-group-1" label="Email address:" label-for="input-1" description="We'll never share your email with anyone else.">
 							<b-form-input id="input-1" v-model="form.email" type="email" required placeholder="Enter email"></b-form-input>
 						</b-form-group>
@@ -21,8 +21,8 @@
 						</b-form-group>
 
 
-						<b-button type="submit" variant="outline-success">Submit</b-button>
-						<b-button type="reset" variant="outline-danger">Reset</b-button>
+						<b-button type="submit" variant="success">Submit</b-button>
+						<b-button type="reset" variant="danger">Reset</b-button>
 					</b-form>
 				</b-col>
 			</b-row>
@@ -31,8 +31,9 @@
 </template>
 <script src="./register.js"></script>
 <style scoped="true">
-	.register{
-		background-color: white;
-		opacity: 0.98;
+	.card{
+		background-color: #5cb8c9 !important;;
+		opacity: 0.95;
+		padding: 25px;
 	}
 </style>

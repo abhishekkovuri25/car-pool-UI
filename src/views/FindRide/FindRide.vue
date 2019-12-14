@@ -3,7 +3,7 @@
 			<b-row align-h="center">
 				<b-col cols="5">
                     <h2> Find a Ride </h2>
-					<b-card style="opacity:0.98">
+					<b-card class ="card">
                         <b-row>
                             Pick up : <vue-google-autocomplete
                                         id="from_location"
@@ -23,7 +23,7 @@
                                     </vue-google-autocomplete>
                         </b-row>
                         <b-row align-h="center" class="mt-3">
-                            <b-button type="submit" variant="outline-success">Search</b-button>
+                            <b-button type="submit" variant="success">Search</b-button>
                         </b-row>
                     </b-card>
 				</b-col>
@@ -32,4 +32,8 @@
 </template>
 <script src="./find-ride.js"></script>
 <style scoped>
+.card {
+    opacity:0.8;
+    background-color:#5cb8c9 !important;
+}
 </style>
