@@ -5,6 +5,8 @@ import Login from '@/views/Login/Login.vue'
 import OfferRide from '@/views/OfferRide/OfferRide.vue'
 import FindRide from '@/views/FindRide/FindRide.vue'
 import NewCar from '@/views/NewCar/NewCar.vue'
+import About from '@/views/About.vue'
+
 
 Vue.use(Router)
 
@@ -36,6 +38,11 @@ export default new Router({
       path: '/offer-ride/add-car',
       name: 'NewCar',
       component: NewCar
+    },
+    {
+      path: '/',
+      name: 'About',
+      component: About
     }
   ]
 })
