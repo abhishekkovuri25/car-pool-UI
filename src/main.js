@@ -5,11 +5,13 @@ import router from './router'
 import store from './store'
 import * as firebase from 'firebase'
 import BootstrapVue from 'bootstrap-vue'
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(BootstrapVue)
+Vue.use(VueGoogleAutocomplete)
 Vue.config.productionTip = false
 
 new Vue({
