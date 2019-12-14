@@ -1,13 +1,13 @@
 <template>
     <b-container>
         <b-row align-h="end">
-            <b-button type="submit" variant="outline-info" :to="{path: '/offer-ride/add-car'}">Register Your Car</b-button>
+            <b-button type="submit" variant="info" :to="{path: '/offer-ride/add-car'}">Register Your Car</b-button>
         </b-row>
         <b-row align-h="center">
             <b-col cols="5">
                 <h2> Offer a Ride </h2>
                 
-                <b-card style="opacity:0.9">
+                <b-card style="opacity:0.98">
                     <b-row>
                         Select Your Car : <b-form-select v-model="selected" :options="options"></b-form-select>
                         No.of.Seats : <b-form-input id="number" type="number" v-model="availableSeats"></b-form-input>

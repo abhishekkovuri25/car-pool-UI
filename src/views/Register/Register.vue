@@ -33,6 +33,6 @@
 <style scoped="true">
 	.register{
 		background-color: white;
-		opacity: 0.9;
+		opacity: 0.98;
 	}
 </style>
