@@ -17,23 +17,6 @@
     </b-collapse>
   </b-navbar>
 </div>
-	<!-- <div class="navbar-container">
-		<b-img src="https://cdn.techinasia.com/wp-content/uploads/2016/06/uberpool-graphic.png"></b-img>
-		<b-row align-h="center">
-			<b-col cols="4">
-				<b-card>
-					<b-tabs pills card align="center">
-						<b-tab title="Login" active>
-							<login></login>
-						</b-tab>
-						<b-tab title="Register">
-							<register></register>
-						</b-tab>
-					</b-tabs>
-				</b-card>
-			</b-col>
-		</b-row>
-	</div> -->
 </template>
 
 <script src="./navbar.js"></script>

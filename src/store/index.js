@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import API from '@/api/apiUtils.js'
+import axios from 'axios'
 import firebase from 'firebase'
 
 Vue.use(Vuex)
@@ -71,8 +73,19 @@ export default new Vuex.Store({
           commit('setStatus', 'failure')
           commit('setError', error.message)
         })
-    }
-  },
+    },
+
+    createRide (payload) {
+      let path = 'https://corporate-car-pool.herokuapp.com/api/ride/create-trip'
+      axios.post(path, payload)
+            .then(function () {
+                alert('success')
+            })
+            .catch(function () {
+                alert('fail')
+		})
+	}
+},
 
   getters: {
 
