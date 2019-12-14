@@ -1,4 +1,4 @@
-# car-pooling
+# car-pool
 
 ## Project setup
 ```

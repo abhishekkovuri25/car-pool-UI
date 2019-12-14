@@ -1,29 +1,35 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Register from '@/views/Register/Register.vue'
+import Login from '@/views/Login/Login.vue'
+import OfferRide from '@/views/OfferRide/OfferRide.vue'
+import FindRide from '@/views/FindRide/FindRide.vue'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
-
-const router = new VueRouter({
+export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes: [
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/offer-ride',
+      name: 'OfferRide',
+      component: OfferRide
+    },
+    {
+      path: '/find-ride',
+      name: 'FindRide',
+      component: FindRide
+    }
+  ]
 })
-
-export default router
