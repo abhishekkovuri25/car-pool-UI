@@ -3,7 +3,7 @@
 			<b-row align-h="center">
 				<b-col cols="5">
                     <h2> Find a Ride </h2>
-					<b-card style="opacity:0.9">
+					<b-card style="opacity:0.98">
                         <b-row>
                             Pick up : <vue-google-autocomplete
                                         id="from_location"

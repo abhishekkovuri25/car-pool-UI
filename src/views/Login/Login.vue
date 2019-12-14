@@ -24,6 +24,6 @@
 <style scoped=true>
 	.login {
 		background-color: white;
-		opacity: 0.9;
+		opacity: 0.98;
 	}
 </style>
