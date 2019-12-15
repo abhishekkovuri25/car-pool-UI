@@ -3,16 +3,16 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import firebase from 'firebase'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 
   state: {
-	userId: null,
-	userName: null,
+    userId: null,
+    userName: null,
     status: null,
     error: null
-
   },
   mutations: {
 
@@ -35,36 +35,33 @@ export default new Vuex.Store({
     setError (state, payload) {
       state.error = payload
     }
-
   },
   actions: {
-    getSignUp ({commit},payload) {
+    getSignUp ({commit},{payload, success}) {
 		let path = "https://corporate-car-pool.herokuapp.com/api/users/signup"
 		axios.post(path, payload)
 			.then(function (response) {
 				commit('setUserId',response.data.responseContent.userId)
-				if(response.data.responseContent.signUpSuccess) {
-					alert('sign Up successful')
-					// alert(this.$route)
-					// this.$route.push({ name: 'Login', query: { redirect: '/login' } })
-				}
+        commit('setSignUpStatus',response.data.responseContent.signUpSuccess)
+        if(success){success()}
 			})
 			.catch(function () {
 				alert('signing up failed')
 		})
     },
 
-	signIn ({commit},payload) {
+	signIn ({commit},{payload, success}) {
 		let path = "https://corporate-car-pool.herokuapp.com/api/users/login"
 		axios.post(path, payload)
 			.then(function (response) {
 				commit('setUserName',response.data.responseContent.username)
+        if(success){success()}
 			})
 			.catch(function () {
 				alert('signing in failed')
 			})
 	},
-	
+
     signInAction ({ commit }, payload) {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
@@ -103,10 +100,10 @@ export default new Vuex.Store({
       return state.userId
     },
 
-	userName (state) {
-		return state.userName
-	},
-  
+    userName (state) {
+      return state.userName
+    },
+
     error (state) {
       return state.error
     }
