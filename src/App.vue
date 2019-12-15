@@ -18,6 +18,6 @@
 		position: fixed
 	}
 	.ui-view {
-		margin-top:2%;
+		margin-top:1%;
 	}
 </style>

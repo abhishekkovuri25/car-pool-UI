@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import API from '@/api/apiUtils.js'
 import axios from 'axios'
 import firebase from 'firebase'
 

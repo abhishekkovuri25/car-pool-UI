@@ -2,6 +2,9 @@
 	<div>
 		<b-container>
 			<b-row align-h="center">
+				<h2>Login</h2>
+			</b-row>
+			<b-row align-h="center">
 				<b-col cols="5" >
 					<b-form class="login" @submit="onSubmit" @reset="onReset">
 						<b-form-group id="input-group-1" label="Email address:" label-for="input-1" description="We'll never share your email with anyone else.">

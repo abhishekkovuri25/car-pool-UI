@@ -5,7 +5,11 @@ export default {
 				email: '',
 				password: '',
 				confirmPassword: '',
-				name: ''
+				name: '',
+				DOB: '',
+				phone: '',
+				Org: '',
+				Id:''
 			},
 		}
 	},

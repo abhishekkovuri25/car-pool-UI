@@ -1,8 +1,10 @@
 <template>
     <b-container>
         <b-row align-h="center">
+            <h2>Find a Ride</h2>
+        </b-row>
+        <b-row align-h="center">
             <b-col cols="5">
-                <h2> Find a Ride </h2>
                 <b-card class ="card">
                     <b-row>
                         <!-- Pick up : <vue-google-autocomplete
