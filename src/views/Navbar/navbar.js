@@ -15,7 +15,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'userName'
+      'userName',
+      'signUpStatus',
   ])
   }
 }

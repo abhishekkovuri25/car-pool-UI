@@ -1,4 +1,5 @@
 // import axios from 'axios'
+import { mapGetters } from 'vuex'
 export default {
 	data() {
 		return {
@@ -11,6 +12,11 @@ export default {
 			empId:'',
 			confirmPassword: ''
 		}
+	},
+	computed: {
+		...mapGetters ([
+			'signUpStatus'
+		])
 	},
 	methods: {
 		signUp() {
@@ -27,8 +33,11 @@ export default {
 						"organisationName":this.organisationName
 					}
 				}
-				this.$store.dispatch('getSignUp',payload)
+				this.$store.dispatch('getSignUp',{payload, success: this.onSuccessCall })
 			}
+		},
+		onSuccessCall() {
+			this.$router.push({name: 'Login', path: '/login'})
 		},
 		reset () {
 			this.emailId = '',

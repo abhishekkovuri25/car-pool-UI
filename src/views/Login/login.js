@@ -14,12 +14,14 @@ export default {
 					"password": this.password,
 				}
 			}
-			this.$store.dispatch('signIn', payload)
+			this.$store.dispatch('signIn', {payload, success: this.onSuccessCall })
 		},
-
+		onSuccessCall() {
+			this.$router.push({name: 'FindRide', path: '/find-ride'})
+		},
 		reset() {
 			this.emailId = ''
 			this.password = ''
 		}
-	}	
+	}
 }
