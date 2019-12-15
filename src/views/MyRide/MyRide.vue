@@ -5,7 +5,6 @@
         </b-row>
             <b-card v-if="upcomingDetails.length" class="card">
                 <b-table striped hover :items="upcomingDetails" :fields="fields">
-                    {{historyDetails}}
                     <template slot="userId" slot-scope="row">
                         {{ row.value.userId }}
                     </template>
