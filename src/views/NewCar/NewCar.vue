@@ -8,10 +8,10 @@
                         Vehicle Name : <b-form-input v-model="vehicleName"></b-form-input>
                         Vehicle Number : <b-form-input v-model="vehicleNumber"></b-form-input>
                         Vehicle Type : <b-form-select v-model="vehicleType" :options="vehicletypes"></b-form-select>
-                        Vehicle Color : <b-form-input id="time" v-model="Color"></b-form-input>
+                        Vehicle Color : <b-form-input id="time" v-model="color"></b-form-input>
                     </b-row>
                     <b-row align-h="center" class="mt-3">
-                        <b-button type="submit" variant="success">Done</b-button>
+                        <b-button type="submit" variant="success" @click="registerVehicle">Done</b-button>
                     </b-row>
                 </b-card>
             </b-col>
@@ -23,5 +23,6 @@
 .card {
     opacity:0.85;
     background-color:#5cb8c9 !important;
+    padding: 25px;
 }
 </style>

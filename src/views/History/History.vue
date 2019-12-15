@@ -1,10 +1,10 @@
 <template>
     <b-container>
         <b-row align-h="center">
-            <h2>Upcoming</h2>
-        </b-row>
-            <b-card v-if="upcomingDetails.length" class="card">
-                <b-table striped hover :items="upcomingDetails" :fields="fields">
+            <h2>History</h2>
+        </b-row >
+            <b-card v-if="historyDetails.length" class="card">
+                <b-table striped hover :items="historyDetails" :fields="fields">
                     {{historyDetails}}
                     <template slot="userId" slot-scope="row">
                         {{ row.value.userId }}
@@ -19,22 +19,22 @@
                         {{ row.value.rideStartTime }}
                     </template>
                     <template slot="seats" slot-scope="row">
-                        {{ row.value.seats }} | '0'
+                        {{ row.value.seats }}
                     </template>
                     <template slot="tripStatus" slot-scope="row">
-                        {{ row.value.tripStatus }} 
+                        {{ row.value.tripStatus }}
                     </template>
                     <template slot="vehicleNumber" slot-scope="row">
                         {{ row.value.vehicleNumber }}
                     </template>
                 </b-table>
             </b-card>
-        <b-card v-else class="card">
-            No Data
-        </b-card>
+            <b-card v-else class="card">
+                No Data
+            </b-card>
     </b-container>
 </template>
-<script src="./my-ride.js"></script>
+<script src="./history.js"></script>
 <style scoped>
 .card {
     background-color: #5cb8c9 !important;
