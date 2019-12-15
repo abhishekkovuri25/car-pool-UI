@@ -7,6 +7,7 @@ import FindRide from '@/views/FindRide/FindRide.vue'
 import NewCar from '@/views/NewCar/NewCar.vue'
 import About from '@/views/About.vue'
 import RideList from '@/views/RideListing/RideList.vue'
+import MyProfile from '@/views/MyProfile/MyProfile.vue'
 
 
 Vue.use(Router)
@@ -49,6 +50,11 @@ export default new Router({
       path: '/find-ride/ride-list',
       name: 'RideList',
       component: RideList
+    },
+    {
+      path: '/my-profile',
+      name: 'MyProfile',
+      component: MyProfile
     }
   ]
 })

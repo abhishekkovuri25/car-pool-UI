@@ -59,7 +59,6 @@
 <style scoped>
 .card {
     background-color: #5cb8c9 !important;
-    ;
     opacity: 0.95;
     padding: 25px;
 }
