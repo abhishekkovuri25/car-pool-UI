@@ -7,14 +7,6 @@
             <b-col cols="5">
                 <b-card class ="card">
                     <b-row>
-                        <!-- Pick up : <vue-google-autocomplete
-                                    id="from_location"
-                                    :country="['in']"
-                                    classname="form-control"
-                                    placeholder="Start typing"
-                                    v-on:placechanged="fromAddress"
-                                >
-                                </vue-google-autocomplete> -->
                         Pick Up : <b-input v-model="pickUp"></b-input>
                         Destination : <vue-google-autocomplete
                                     id="to_location"

@@ -16,14 +16,14 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/register',
-      name: 'Register',
-      component: Register
-    },
-    {
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/offer-ride',

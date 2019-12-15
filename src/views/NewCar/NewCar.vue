@@ -21,7 +21,7 @@
 <script src="./new-car.js"></script>
 <style scoped>
 .card {
-    opacity:0.8;
+    opacity:0.85;
     background-color:#5cb8c9 !important;
 }
 </style>
