@@ -9,12 +9,12 @@
                 
                 <b-card class="card">
                     <b-row>
-                        Select Your Vehicle : <b-form-select v-model="selected" :options="options"></b-form-select>
+                        Select Your Vehicle : <b-form-select v-model="selectedVehicle" :options="vehicleOptions"></b-form-select>
                         No.of.Seats : <b-form-input id="number" type="number" v-model="availableSeats"></b-form-input>
                         Destination : <vue-google-autocomplete
                                         id="map"
                                         classname="form-control"
-                                        placeholder="Start typing"
+                                        placeholder="Enter your Destination"
                                         :placechanged="getAddressData"
                                     >
                                     </vue-google-autocomplete>

@@ -12,8 +12,11 @@ export default {
       orgLatitude: 12.9180242,
       orgLongitude: 77.64905290000002,
       orgPlaceID: "ChIJTRkj6YMUrjsR3jsq2T2_Jlg",
-      dummy:null
-
+      selectedVehicle: '',
+      vehicleOptions : [
+        { value: 'AP23 ED8234', text: 'SUV' },
+        { value: 'TS15 ED8949', text: 'Royal Enfield' }
+    ],
     }
   },
   created() {
@@ -41,7 +44,7 @@ export default {
                     },
                     "tripStartTime": "2019-12-15T17:00:00.000Z",
                     "offeredSeats": this.availableSeats,
-                    "carNumber" : "XXXX-XX-XXXX"
+                    "carNumber" : this.selectedVehicle
                 }
             }
             let path = 'https://corporate-car-pool.herokuapp.com/api/ride/create-trip'

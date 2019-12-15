@@ -6,6 +6,7 @@ import OfferRide from '@/views/OfferRide/OfferRide.vue'
 import FindRide from '@/views/FindRide/FindRide.vue'
 import NewCar from '@/views/NewCar/NewCar.vue'
 import About from '@/views/About.vue'
+import RideList from '@/views/RideListing/RideList.vue'
 
 
 Vue.use(Router)
@@ -43,6 +44,11 @@ export default new Router({
       path: '/',
       name: 'About',
       component: About
+    },
+    {
+      path: '/find-ride/ride-list',
+      name: 'RideList',
+      component: RideList
     }
   ]
 })
