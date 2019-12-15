@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 import firebase from 'firebase'
 
 Vue.use(Vuex)
@@ -43,6 +43,7 @@ export default new Vuex.Store({
           commit('setError', null)
         })
         .catch((error) => {
+            alert('fail')
           commit('setStatus', 'failure')
           commit('setError', error.message)
         })
@@ -54,10 +55,12 @@ export default new Vuex.Store({
           commit('setUser', response.user.uid)
           commit('setStatus', 'success')
           commit('setError', null)
+          alert('success')
         })
         .catch((error) => {
           commit('setStatus', 'failure')
           commit('setError', error.message)
+          alert('errorr on login')
         })
     },
 
@@ -72,17 +75,6 @@ export default new Vuex.Store({
           commit('setStatus', 'failure')
           commit('setError', error.message)
         })
-    },
-
-    createRide (payload) {
-      let path = 'https://corporate-car-pool.herokuapp.com/api/ride/create-trip'
-      axios.post(path, payload)
-            .then(function () {
-                alert('success')
-            })
-            .catch(function () {
-                alert('fail')
-		})
 	}
 },
 
