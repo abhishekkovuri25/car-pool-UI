@@ -21,11 +21,13 @@ new Vue({
 }).$mount('#app')
 
 var config = {
-  apiKey: "AIzaSyDJZ7Ifb9v6m1RGmM699H7sPG3g_9CQa_4",
-  authDomain: "car-pooling-ddaa2.firebaseapp.com",
-  databaseURL: "https://car-pooling-ddaa2.firebaseio.com",
-  projectId: "car-pooling-ddaa2",
-  storageBucket: "car-pooling-ddaa2.appspot.com",
-  messagingSenderId: "874710525010"
+    apiKey: "AIzaSyDSi7D_yXbDKnunh9Rglnjs9YDekmY2Qa0",
+    authDomain: "pool-9665c.firebaseapp.com",
+    databaseURL: "https://pool-9665c.firebaseio.com",
+    projectId: "pool-9665c",
+    storageBucket: "pool-9665c.appspot.com",
+    messagingSenderId: "1063246274391",
+    appId: "1:1063246274391:web:908559d84584106217e812",
+    measurementId: "G-GC1P6FD31H"
 }
 firebase.initializeApp(config)

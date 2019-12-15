@@ -5,8 +5,9 @@
         </b-row>
         <b-row align-h="center">
             <b-col cols="5">
-                <h2> Offer Ride </h2>
-                
+                <b-row align-h="center">
+                    <h2>Offer Ride</h2>
+                </b-row>
                 <b-card class="card">
                     <b-row>
                         Select Your Vehicle : <b-form-select v-model="selectedVehicle" :options="vehicleOptions"></b-form-select>
