@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import axios from 'axios'
+import axios from 'axios'
 import firebase from 'firebase'
 
 Vue.use(Vuex)
@@ -8,16 +8,21 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
   state: {
-    user: null,
+	userId: null,
+	userName: null,
     status: null,
     error: null
 
   },
   mutations: {
 
-    setUser (state, payload) {
-      state.user = payload
-    },
+    setUserId (state, payload) {
+      state.userId = payload
+	},
+
+	setUserName (state, payload) {
+		state.userName = payload
+	},
 
     removeUser (state) {
       state.user = null
@@ -33,22 +38,33 @@ export default new Vuex.Store({
 
   },
   actions: {
-    signUpAction ({ commit }, payload) {
-      commit('setStatus', 'loading')
-      firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
-        .then((response) => {
-          alert('success')
-          commit('setUser', response.user.uid)
-          commit('setStatus', 'success')
-          commit('setError', null)
-        })
-        .catch((error) => {
-            alert('fail')
-          commit('setStatus', 'failure')
-          commit('setError', error.message)
-        })
+    getSignUp ({commit},payload) {
+		let path = "https://corporate-car-pool.herokuapp.com/api/users/signup"
+		axios.post(path, payload)
+			.then(function (response) {
+				commit('setUserId',response.data.responseContent.userId)
+				if(response.data.responseContent.signUpSuccess) {
+					alert('sign Up successful')
+					// alert(this.$route)
+					// this.$route.push({ name: 'Login', query: { redirect: '/login' } })
+				}
+			})
+			.catch(function () {
+				alert('signing up failed')
+		})
     },
 
+	signIn ({commit},payload) {
+		let path = "https://corporate-car-pool.herokuapp.com/api/users/login"
+		axios.post(path, payload)
+			.then(function (response) {
+				commit('setUserName',response.data.responseContent.username)
+			})
+			.catch(function () {
+				alert('signing in failed')
+			})
+	},
+	
     signInAction ({ commit }, payload) {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then((response) => {
@@ -79,15 +95,18 @@ export default new Vuex.Store({
 },
 
   getters: {
-
     status (state) {
       return state.status
     },
 
-    user (state) {
-      return state.user
+    userId (state) {
+      return state.userId
     },
 
+	userName (state) {
+		return state.userName
+	},
+  
     error (state) {
       return state.error
     }

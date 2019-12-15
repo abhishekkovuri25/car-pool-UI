@@ -27,7 +27,7 @@ export default {
     getAddressData(addressData,placeResultData) {
         this.latitude = addressData.latitude
         this.longitude = addressData.longitude
-        this.placeId = placeResultData.placeId
+        this.placeId = placeResultData.place_id
     },
     offerRide() {
         let payload = {
@@ -55,9 +55,9 @@ export default {
                 })
                 .catch(function () {
                     alert('fail')
-            })
-        }
-    },  
+                })
+            }
+        },  
     components: {
         VueGoogleAutocomplete
     }

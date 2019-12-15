@@ -16,7 +16,7 @@
                                         id="map"
                                         classname="form-control"
                                         placeholder="Enter your Destination"
-                                        :placechanged="getAddressData"
+                                        v-on:placechanged="getAddressData"
                                     >
                                     </vue-google-autocomplete>
                         Date : <b-form-input id="time" v-model="dateSelected" type="date"></b-form-input>

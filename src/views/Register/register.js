@@ -1,32 +1,44 @@
+// import axios from 'axios'
 export default {
 	data() {
 		return {
-			form: {
-				email: '',
-				password: '',
-				confirmPassword: '',
-				name: '',
-				DOB: '',
-				phone: '',
-				Org: '',
-				Id:''
-			},
+			emailId: '',
+			password: '',
+			fullName: '',
+			dob: '',
+			phoneNumber: '',
+			organisationName: '',
+			empId:'',
+			confirmPassword: ''
 		}
 	},
 	methods: {
-		onSubmit() {
-			if(this.form.password === this.form.confirmPassword) {
-				const user = {
-					email: this.form.email,
-					password: this.form.password
+		signUp() {
+			if(this.password === this.confirmPassword) {
+				let payload = {
+					"userId": null,
+					"requestContent":{
+						"fullName": this.fullName,
+						"emailId": this.emailId,
+						"phoneNumber": this.phoneNumber,
+						"password": this.password,
+						"dob": this.dob,
+						"empId": this.empId,
+						"organisationName":this.organisationName
+					}
 				}
-			this.$store.dispatch('signUpAction', user)
+				this.$store.dispatch('getSignUp',payload)
 			}
 		},
-		onReset() {
-		// evt.preventDefault()
-			this.form.email = ''
-			this.form.name = ''
+		reset () {
+			this.emailId = '',
+			this.password = '',
+			this.fullName = '',
+			this.dob = '',
+			this.phoneNumber = '',
+			this.organisationName = '',
+			this.empId = '',
+			this.confirmPassword = ''
 		}
-	}
+	},
 }

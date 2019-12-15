@@ -1,26 +1,25 @@
 export default {
 	data() {
 		return {
-			form: {
-				email: '',
-				password: '',
-				confirmPassword: '',
-				name: ''
-			},
+			emailId: '',
+			password: ''
 		}
 	},
 	methods:{
-		onSubmit () {
-			const user = {
-				email: this.form.email,
-				password: this.form.password
+		signIn () {
+			let payload = {
+				"userId": null,
+				"requestContent":{
+					"emailId": this.emailId,
+					"password": this.password,
+				}
 			}
-			this.$store.dispatch('signInAction', user)
+			this.$store.dispatch('signIn', payload)
 		},
-		onReset() {
-		// evt.preventDefault()
-			this.form.email = ''
-			this.form.password = ''
+
+		reset() {
+			this.emailId = ''
+			this.password = ''
 		}
 	}	
 }

@@ -1,3 +1,4 @@
+import { mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -8,5 +9,13 @@ export default {
     this.page = "Login"
   },
   methods: {
+    reset() {
+      this.$store.commit('setUserName', '')
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'userName'
+  ])
   }
 }
