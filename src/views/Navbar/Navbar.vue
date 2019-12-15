@@ -1,13 +1,17 @@
 <template>
 <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-        <b-navbar-brand :to="{path: '/find-ride'}">Car Pooling</b-navbar-brand>
+        <b-navbar-brand :to="{path: '/'}">Car Pooling</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-                <b-nav-item :to="{path: '/offer-ride'}">Offer Ride</b-nav-item>
+                <b-nav-item :to="{path: '/offer-ride'}" @click="callVehicles">Offer Ride</b-nav-item>
                 <b-nav-item :to="{path: '/find-ride'}">Find Ride</b-nav-item>
+                 <b-nav-item-dropdown v-if="userName" text="My Rides" right>
+                    <b-dropdown-item :to="{path: '/my-ride/history'}" @click="callHistory">History</b-dropdown-item>
+                    <b-dropdown-item :to="{path: '/my-ride/upcoming'}" @click="callUpcoming">Upcoming</b-dropdown-item>
+                </b-nav-item-dropdown>
                 <b-nav-item v-if="userName" @click="callMyProfile" :to="{path: '/my-profile'}">My Profile</b-nav-item>
             </b-navbar-nav>
 

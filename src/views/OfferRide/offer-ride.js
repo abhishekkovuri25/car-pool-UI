@@ -1,5 +1,6 @@
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
-import axios from 'axios'
+import { mapGetters } from 'vuex'
+// import axios from 'axios'
 export default {
   data () {
     return {
@@ -9,19 +10,23 @@ export default {
       latitude: null,
       longitude: null,
       placeId: '',
-      dateSelected: '',
+      dateSelected: null,
+      time: null,
       orgLatitude: 12.9180242,
       orgLongitude: 77.64905290000002,
       orgPlaceID: "ChIJTRkj6YMUrjsR3jsq2T2_Jlg",
       selectedVehicle: '',
-      vehicleOptions : [
-        { value: 'AP23 ED8234', text: 'SUV' },
-        { value: 'TS15 ED8949', text: 'Royal Enfield' }
-    ],
+    options: {
+        format: 'DD/MM/YYYY h:mm:ss',
+        useCurrent: false,
+        showClear: true,
+        showClose: true,
+      }
     }
   },
   created() {
     this.page = "Login" 
+    this.$store.dispatch('getVehicleList', this.userId)
   },
   methods: {
     getAddressData(addressData,placeResultData) {
@@ -30,35 +35,43 @@ export default {
         this.placeId = placeResultData.place_id
     },
     offerRide() {
+        let datetime = this.dateSelected + ',' + this.time
+        let date = new Date(datetime)
+        let pAddress = ''
         let payload = {
-            "userId":"harshit.sidhwa7565",
+            "userId": this.userId,
             "requestContent" : {
                     "pickupPoint": {
                         "latitude": this.orgLatitude,
                         "longitude": this.orgLongitude,
-                        "placeId": this.orgPlaceID
+                        "placeId": this.orgPlaceID,
+                        "placeAddress": pAddress
                     },
                     "destinationPoint":{
                         "latitude": this.latitude,
                         "longitude": this.longitude,
-                        "placeId": this.placeId
+                        "placeId": this.placeId,
+                        "placeAddress": pAddress
                     },
-                    "tripStartTime": "2019-12-15T17:00:00.000Z",
+                    "tripStartTime": date,
                     "offeredSeats": this.availableSeats,
-                    "carNumber" : this.selectedVehicle
+                    "vehicleNumber" : this.selectedVehicle
                 }
             }
-            let path = 'https://corporate-car-pool.herokuapp.com/api/ride/create-trip'
-            axios.post(path, payload)
-                .then(function () {
-                    alert('success')
-                })
-                .catch(function () {
-                    alert('fail')
-                })
-            }
-        },  
+            this.$store.dispatch('createTrip', {payload,success: this.callFind})
+        },
+        callFind() {
+            this.$router.push({name: 'FindRideHome', path: '/'})
+        }
+
+    },  
     components: {
         VueGoogleAutocomplete
+    },
+    computed: {
+        ...mapGetters([
+            'userId',
+            'vehicles'
+        ])
     }
 }

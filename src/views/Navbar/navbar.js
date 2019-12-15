@@ -17,6 +17,21 @@ export default {
 		},
 		callMyProfile() {
 			this.$store.dispatch('myProfile', this.userId)
+		},
+		callHistory() {
+			let payload = {
+				userId : this.userId
+			}
+			this.$store.dispatch('callHistory', payload)
+		},
+		callUpcoming() {
+			let payload = {
+				userId : this.userId
+			}
+			this.$store.dispatch('callUpcoming', payload)
+		},
+		callVehicles() {
+			this.$store.dispatch('getVehicleList', this.userId)
 		}
 	},
 	computed: {

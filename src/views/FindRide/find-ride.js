@@ -1,37 +1,70 @@
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
+import { mapGetters } from 'vuex'
 export default {
-  data () {
-    return {
-      page: '',
-      selected: '',
-      to_address: '',
-      from_address: '',
-      pickUp: 'Coviam Technologies',
-      placeResultData: {},
-      id:'',
-      fields: ['first_name', 'last_name', 'age'],
-      items: [
-        { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-        { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-        { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-        { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
-      ]
-    }
-  },
-  created() {
-    this.page = "Login" 
-  },
-  methods: {
-    fromAddress(addressData, placeResultData) {
-        this.from_address = addressData;
-        this.place_id = placeResultData
-    },
-    toAddress(addressData,placeResultData) {
-        this.to_address = addressData;
-        this.place_id = placeResultData
-    }
-  },
-  components: {
-    VueGoogleAutocomplete
-  }
+	data() {
+		return {
+			page: '',
+			selected: '',
+			to_address: '',
+			from_address: '',
+			pickUp: 'Coviam Technologies',
+			placeResultData: {},
+			requestedSeats: '',
+			id: '',
+			latitude: '',
+			longitude: '',
+			placeId: '',
+			dateSelected: '',
+			time: '',
+			orgLatitude: 12.9180242,
+			orgLongitude: 77.64905290000002,
+			orgPlaceID: "ChIJTRkj6YMUrjsR3jsq2T2_Jlg",
+		}
+	},
+	created() {
+		this.page = "Login"
+	},
+	methods: {
+		toAddress(addressData, placeResultData) {
+			this.latitude = addressData.latitude
+			this.longitude = addressData.longitude
+			this.placeId = placeResultData.place_id
+		},
+		findRide() {
+			let datetime = this.dateSelected + ',' + this.time
+			let date = new Date(datetime)
+			let pAddress = ''
+			let payload = {
+				"userId": this.userId,
+				"requestContent": {
+					"pickupPoint": {
+						"latitude": this.orgLatitude,
+						"longitude": this.orgLongitude,
+						"placeId": this.orgPlaceID,
+						"placeAddress": pAddress
+					},
+					"destinationPoint": {
+						"latitude": this.latitude,
+						"longitude": this.longitude,
+						"placeId": this.placeId,
+						"placeAddress": pAddress
+					},
+					"rideStartTime": date,
+					"requestedSeats": this.requestedSeats,
+				}
+			}
+			this.$store.dispatch('findRide',{payload, success: this.callRideList})
+		},
+		callRideList() {
+			this.$router.push({name: 'RideList', path: '/find-ride/ride-list'})
+		}
+	},
+	components: {
+		VueGoogleAutocomplete
+	},
+	computed: {
+		...mapGetters([
+			'userId'
+		])
+	}
 }

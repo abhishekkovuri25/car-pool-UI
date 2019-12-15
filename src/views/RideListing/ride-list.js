@@ -1,13 +1,57 @@
+import { mapGetters } from 'vuex'
 export default {
     data () {
         return {
-            fields: ['first_name', 'last_name', 'age'],
-        items: [
-          { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-          { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-          { isActive: false, age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-          { isActive: true, age: 38, first_name: 'Jami', last_name: 'Carney' }
-        ]
+            selectedRide: {},
+            fields: [
+                { key: 'userId', label: 'User Id'},
+                { key: 'fullName', label: 'Offerer Name'},
+                { key: 'phoneNumber', label: 'Phone Number'},
+                { key: 'pickupPoint.placeAddress', label: 'Pick Up'},
+                { key: 'destinationPoint.placeAddress', label: 'Destination'},
+                { key: 'tripStartTime', label: 'Start Time'},
+                { key: 'offeredSeats', label: 'Seats'},
+                { key: 'numberOfJoinedRiders', label: 'No of Co-passengers'},
+                { key: 'vehicleNumber', label: 'Vehicle Number'}
+            ]
         }
-    }
+    },
+    methods: {
+        onRowSelected(items) {
+            this.selectedRide = items
+        },
+        join() {
+            let payload = {
+                "userId": this.userId,
+				"requestContent": {
+                    "userId": this.selectedRide[0].userId,
+                    "tripId": this.selectedRide[0].tripId,
+					"pickupPoint": {
+						"latitude": this.selectedRide[0].pickupPoint.latitude,
+						"longitude": this.selectedRide[0].pickupPoint.longitude,
+						"placeId": this.selectedRide[0].pickupPoint.placeId,
+						"placeAddress": this.selectedRide[0].pickupPoint.placeAddress
+					},
+					"destinationPoint": {
+						"latitude": this.selectedRide[0].destinationPoint.latitude,
+						"longitude": this.selectedRide[0].destinationPoint.longitude,
+						"placeId": this.selectedRide[0].destinationPoint.placeId,
+						"placeAddress": this.selectedRide[0].destinationPoint.placeAddress
+					},
+					"rideStartTime": this.selectedRide[0].tripStartTime,
+					"requestedSeats": this.selectedRide[0].offeredSeats,
+                }
+            }
+            this.$store.dispatch('joinRide',{payload,success: this.callUpcoming})
+        },
+        callUpcoming () {
+            this.$router.push({name: 'MyRide', path: '/my-ride/upcoming'})
+        }
+    },
+    computed: {
+		...mapGetters([
+            'rideList',
+            'userId'
+		])
+	}
 }

@@ -1,3 +1,4 @@
+import { mapGetters } from 'vuex'
 export default {
     data () {
         return {
@@ -10,5 +11,27 @@ export default {
             ],
             color: ''
         }
-    }
+    }, 
+    methods : {
+        registerVehicle() {
+            let payload = {
+                "userId": this.userId,
+                "requestContent" : {
+                        "vehicleName" : this.vehicleName,
+                        "vehicleNumber" : this.vehicleNumber,
+                        "vehicleType" : this.vehicleType,
+                        "vehicleColor" : this.color
+                    }
+                }
+            this.$store.dispatch('vehicleRegistration',{payload, success : this.callOfferRides})
+        },
+        callOfferRides() {
+            this.$router.push({name: 'OfferRide', path: '/offer-ride'})
+        }
+    },
+    computed: {
+		...mapGetters([
+			'userId'
+		])
+	}
 }
