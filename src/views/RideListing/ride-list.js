@@ -10,8 +10,7 @@ export default {
                 { key: 'pickupPoint.placeAddress', label: 'Pick Up'},
                 { key: 'destinationPoint.placeAddress', label: 'Destination'},
                 { key: 'tripStartTime', label: 'Start Time'},
-                { key: 'offeredSeats', label: 'Seats'},
-                { key: 'numberOfJoinedRiders', label: 'No of Co-passengers'},
+                { key: 'availableSeats', label: 'Available Seats'},
                 { key: 'vehicleNumber', label: 'Vehicle Number'}
             ]
         }
@@ -39,7 +38,7 @@ export default {
 						"placeAddress": this.selectedRide[0].destinationPoint.placeAddress
 					},
 					"rideStartTime": this.selectedRide[0].tripStartTime,
-					"requestedSeats": this.selectedRide[0].offeredSeats,
+					"requestedSeats": this.selectedRide[0].requestedSeats,
                 }
             }
             this.$store.dispatch('joinRide',{payload,success: this.callUpcoming})

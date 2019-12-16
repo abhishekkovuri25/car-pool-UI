@@ -3,7 +3,7 @@
         <b-row align-h="center">
             <h2>History</h2>
         </b-row >
-            <b-card v-if="historyDetails.length" class="card">
+            <b-card v-if="historyDetails!==null" class="card">
                 <b-table striped hover :items="historyDetails" :fields="fields">
                     {{historyDetails}}
                     <template slot="userId" slot-scope="row">

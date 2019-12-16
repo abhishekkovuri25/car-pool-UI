@@ -82,7 +82,7 @@ export default new Vuex.Store({
 			axios.post(path, payload)
 				.then(function (response) {
 					commit('setUserId', response.data.responseContent.userId)
-					commit('setSignUpStatus', response.data.responseContent.signUpSuccess)
+					alert('success')
 					if (success) { success() }
 				})
 				.catch(function () {
@@ -96,6 +96,7 @@ export default new Vuex.Store({
 				.then(function (response) {
 					commit('setUserName', response.data.responseContent.username)
 					commit('setUserId', response.data.responseContent.userId)
+					alert('success')
 					if (success) { success() }
 				})
 				.catch(function () {
@@ -141,6 +142,7 @@ export default new Vuex.Store({
 			let path = "https://corporate-car-pool.herokuapp.com/api/vehicles/register"
 			axios.post(path, payload)
 				.then(function (response) {
+					alert('success')
 					commit('setRegistration', response.data.responseContent)
 					if (success) success()
 				})

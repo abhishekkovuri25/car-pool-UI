@@ -3,7 +3,7 @@
         <b-row align-h="center">
             <h2>Upcoming</h2>
         </b-row>
-            <b-card v-if="upcomingDetails.length" class="card">
+            <b-card v-if="upcomingDetails!== null" class="card">
                 <b-table striped hover :items="upcomingDetails" :fields="fields">
                     <template slot="userId" slot-scope="row">
                         {{ row.value.userId }}
@@ -18,7 +18,7 @@
                         {{ row.value.rideStartTime }}
                     </template>
                     <template slot="seats" slot-scope="row">
-                        {{ row.value.seats }} | '0'
+                        {{ row.value.seats }}
                     </template>
                     <template slot="tripStatus" slot-scope="row">
                         {{ row.value.tripStatus }} 
@@ -28,7 +28,7 @@
                     </template>
                 </b-table>
             </b-card>
-        <b-card v-else class="card">
+        <b-card v-else-if="upcomingDetails === null" class="card">
             No Data
         </b-card>
     </b-container>
