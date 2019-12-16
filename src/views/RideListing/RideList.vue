@@ -3,7 +3,7 @@
         <b-row align-h="center">
             <h2>Available Rides</h2>
         </b-row>
-            <b-card v-if="rideList.length" class="card">
+            <b-card v-if="rideList!== null" class="card">
                 <b-table small responsive :items="rideList" :fields="fields" ref="selectableTable" selectable select-mode="single" @row-selected="onRowSelected">
                     <template slot="userId" slot-scope="row">
                         {{ row.value.userId }}
@@ -29,15 +29,12 @@
                     <template slot="vehicleNumber" slot-scope="row">
                         {{ row.value.vehicleNumber }}
                     </template>
-                    <template slot="numberOfJoinedRiders" slot-scope="row">
-                        {{ row.value.numberOfJoinedRiders }} 
-                    </template>
                 </b-table>
                 <b-row align-h="center">
                     <b-button variant="success" @click="join">Join</b-button>
                 </b-row>
             </b-card>
-            <b-card v-else class="card">
+            <b-card v-else-if="rideList === null" class="card">
                 No Data
             </b-card>
     </b-container>

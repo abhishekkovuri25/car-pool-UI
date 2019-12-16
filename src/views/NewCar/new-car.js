@@ -27,6 +27,7 @@ export default {
         },
         callOfferRides() {
             this.$router.push({name: 'OfferRide', path: '/offer-ride'})
+            this.$store.dispatch('getVehicleList', this.userId)
         }
     },
     computed: {
